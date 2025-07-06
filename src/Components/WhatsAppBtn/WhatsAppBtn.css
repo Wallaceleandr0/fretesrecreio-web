@@ -1,0 +1,25 @@
+.WhatsAppBtn {
+}
+
+.WhatsAppBtn a {
+    background-color: #40C351;
+    color: #fff;
+    max-width: 200px;
+    min-height: 40px;
+    border-radius: 50px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.56);
+    transition: .3s ease-in-out;
+    gap: 5px;
+    justify-content: center;
+}
+
+.WhatsAppBtn a:hover {
+    transform: scale(1.06);
+}
+
+.WhatsAppBtn a i #whatsapp-icon {
+    width: 30px;
+}

@@ -1,0 +1,89 @@
+.Servicos {
+    margin-top: 0px !important;
+    padding: 5px;
+    color: #000000d7;
+    background-color: hsla(235, 100%, 85%, 0.63);
+}
+
+.Servicos h2 {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.Servicos .Container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 50px auto;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 5px;
+}
+
+.Servicos .Container img {
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+}
+
+.Servicos .Container .TextBox {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    flex: 1 1 300px;
+}
+
+
+.Servicos .Container .TextBox h3 {
+    font-size: 35px;
+}
+
+.Servicos .Container .TextBox p {
+    font-size: 20px;
+}
+
+.Servicos {
+    padding-bottom: 80px;
+  }
+  
+  /* Containers começam invisíveis e deslocados */
+  .Container {
+    opacity: 0;
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  
+  /* Primeiro container: slide de baixo para cima */
+  .Container.slide-up {
+    transform: translateY(20px);
+  }
+  
+  .Container.aparecer.slide-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Segundo container: slide da direita para a esquerda */
+  #Container2 {
+    /* só para efeito inicial, desloca à direita */
+    transform: translateX(30px);
+  }
+  
+  #Container2.aparecer {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+
+@media(max-width: 854px) {
+    #Container2 .TextBox {
+        order: 2;
+    }
+}
+
+@media(max-width: 340px) {
+    .Servicos h2 {
+        font-size: 40px;
+    }
+}

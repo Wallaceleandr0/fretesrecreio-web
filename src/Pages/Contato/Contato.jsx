@@ -4,18 +4,17 @@ import "./Contato.css";
 function Contato() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
+  const formRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.disconnect(); // desconecta depois que apareceu, pra não ficar observando à toa
+          observer.disconnect();
         }
       },
-      {
-        threshold: 0.1, // 10% do elemento visível pra ativar
-      }
+      { threshold: 0.1 }
     );
 
     if (ref.current) {
@@ -27,12 +26,40 @@ function Contato() {
     };
   }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Abre a nova aba NA HORA do clique para evitar bloqueios
+    window.open("http://localhost:3000/Obrigado", "_blank");
+
+    // Pega os dados do form
+    const form = formRef.current;
+    const formData = new FormData(form);
+
+    try {
+      // Envia via fetch para o formsubmit
+      const response = await fetch("https://formsubmit.co/felipeconforte1@gmail.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        alert("Formulário enviado com sucesso!");
+        form.reset();
+      } else {
+        alert("Erro ao enviar formulário. Tente novamente.");
+      }
+    } catch (error) {
+      alert("Erro na conexão. Tente novamente.");
+      console.error(error);
+    }
+  };
+
   return (
-    <div
-      className={`Contato ${visible ? "aparecer" : ""}`}
-      id="Contato"
-      ref={ref}
-    >
+    <div className={`Contato ${visible ? "aparecer" : ""}`} id="Contato" ref={ref}>
       <div className="TextBox">
         <div>
           <h3>LIGUE PARA NÓS</h3>
@@ -47,13 +74,36 @@ function Contato() {
           <p>Seg - Dom: 24 hrs</p>
         </div>
       </div>
+
       <div className="FormBox">
-        <form action="">
+        <form ref={formRef} onSubmit={handleSubmit}>
           <h3>Entre em contato conosco</h3>
-          <input type="text" placeholder="Enter your Name" />
-          <input type="email" placeholder="Enter a valid email address" />
-          <textarea placeholder="Preciso de um serviço para mudança.."></textarea>
-          <button>Enviar</button>
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Digite seu nome"
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Digite um email válido"
+            required
+          />
+
+          <textarea
+            name="message"
+            placeholder="Preciso de um serviço para mudança..."
+            required
+          ></textarea>
+
+          <input type="hidden" name="_captcha" value="false" />
+
+          <button type="submit" id="btnSubmit">
+            Enviar
+          </button>
         </form>
       </div>
     </div>

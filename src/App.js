@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Pages/Home/Home';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Obrigado from '../src/Pages/Obrigado/Obrigado';
 
 function App() {
 
@@ -21,7 +23,6 @@ function App() {
       }
     };
 
-    // Ouve todos os cliques no documento
     document.addEventListener("click", handleAnchorClick);
 
     return () => {
@@ -30,10 +31,13 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Router>
       <Navbar />
-      <Home />
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Obrigado" element={<Obrigado />} />
+      </Routes>
+    </Router>
   );
 }
 

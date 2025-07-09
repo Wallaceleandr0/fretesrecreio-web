@@ -3,17 +3,20 @@ import Contato from "../Contato/Contato";
 import Depoimentos from "../Depoimentos/Depoimentos";
 import Servicos from "../Servicos/Servicos";
 import Sobre from "../Sobre/Sobre";
+import Footer from "../../Components/Footer/Footer";
 import "./Home.css"
 
 function Home() {
     return (
         <>
+
             <Banner />
             <div className="Home">
                 <Servicos />
                 <Depoimentos />
                 <Sobre />
                 <Contato />
+                <Footer />
             </div>
         </>
     )

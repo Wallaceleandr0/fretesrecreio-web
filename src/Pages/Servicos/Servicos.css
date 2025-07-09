@@ -22,8 +22,9 @@
 }
 
 .Servicos .Container img {
-    max-width: 500px;
+    max-width: 450px;
     width: 100%;
+    max-height: 350px;
     display: flex;
 }
 

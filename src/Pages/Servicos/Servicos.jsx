@@ -72,7 +72,7 @@ function Servicos() {
           </p>
           <WhatsAppBtn />
         </div>
-        <img src="/img/transportes-e-mudancas-BN2.jpg" alt="" />
+        <img src="/img/transportes-e-mudancas-BN2.png" alt="" />
       </div>
     </div>
   );

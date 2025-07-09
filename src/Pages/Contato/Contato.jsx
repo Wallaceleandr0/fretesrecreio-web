@@ -30,7 +30,7 @@ function Contato() {
     e.preventDefault();
 
     // Abre a nova aba NA HORA do clique para evitar bloqueios
-    window.open("http://localhost:3000/Obrigado", "_blank");
+    window.open("https://www.fretesrecreio.com/Obrigado", "_blank");
 
     // Pega os dados do form
     const form = formRef.current;
